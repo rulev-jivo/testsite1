@@ -47,9 +47,25 @@
     ></script>
 
     <script>
+      function jivo_onOpen() {
+        console.log('Widget opened');
+      }
+      
       let i = 1;
       function jivo_onMessageReceived() {
       	console.log(`Check agents messages:  ${i++}`)
+      }
+
+      function jivo_onChangeState(state) {
+        if (state == 'chat') {
+            console.log(`State: chat`)
+        }
+        if (state == 'call' || state == 'chat/call') {
+            console.log(`State: call`)
+        }
+        if (state == 'label' || state == 'chat/min') {
+            console.log(`State: label`)
+        }
       }
     </script>
   </body>
